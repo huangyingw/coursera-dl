@@ -1,6 +1,9 @@
 [remote "origin"]
     url = https://github.com/coursera-dl/coursera-dl.git
     fetch = +refs/heads/*:refs/remotes/origin/*
+[remote "vstrizhenok"]
+    url = https://github.com/vstrizhenok/coursera-dl.git
+    fetch = +refs/heads/*:refs/remotes/vstrizhenok/*
 [remote "github"]
     url = git@github.com:huangyingw/coursera-dl.git
     fetch = +refs/heads/*:refs/remotes/github/*
