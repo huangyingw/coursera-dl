@@ -24,3 +24,5 @@ venv3
 .mypy_cache
 coursera-dl.conf
 README.rst
+neural-networks-deep-learning-syllabus-parsed.json
+neural-networks-deep-learning/
