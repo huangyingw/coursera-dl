@@ -51,6 +51,7 @@ class Downloader(object):
         """
 
         try:
+            self._start_download(url.replace("540p", "720p"), filename, resume)
             self._start_download(url, filename, resume)
         except KeyboardInterrupt as e:
             # keep the file if resume is True
