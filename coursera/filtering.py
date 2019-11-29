@@ -109,7 +109,7 @@ def find_resources_to_get(lecture, file_formats, resource_filter, ignored_format
                     logging.debug('Skipping b/c of rf: %s %s',
                                   resource_filter, r[1])
                     continue
-                resources_to_get.append((fmt0, r[0], r[1]))
+                resources_to_get.append((fmt0, r[0].replace("540p", "720p"), r[1]))
         else:
             logging.debug(
                 'Skipping b/c format %s not in %s', fmt, file_formats)
