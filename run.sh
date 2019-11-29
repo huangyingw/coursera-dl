@@ -3,13 +3,12 @@ SCRIPT=$(realpath "$0")
 SCRIPTPATH=$(dirname "$SCRIPT")
 cd "$SCRIPTPATH"
 
-rm -fr /usr/local/lib/python3.7/site-packages/coursera/
 python3 setup.py build
 python3 setup.py install
 coursera-dl \
     --subtitle-language en,zh-CN \
     --download-quizzes \
-    -ca 0ZyrSVac6ZlWz5IP4jsS0ElKo0NUjdDTm9v9Arzpg1YNJyIeyRysCxdvbwQ4TfPU051EC7Pu4CDIP0QstvjQQw.0vvoKD4NK_MChItKI4KLkQ.OIEPh1yOMB7iJR1TEl90Dulrn7sEe1qvqXW9BLfMnadD9J_NohPOriMZnnmSlZEHtm00X1BdKG-a1jLwMpblvKqtDmqIHfOljQuhXkjSd6MdSLkja0tHQJ8_74-koNz1vReTwve2u_nRGQYvtBJrXodQ1PNPZWYbjR79RUaX0xO3VeEyFw2KDaUBk5Hk52dD \
+    -ca 3Ogw4yMr6pNuAeVjSf-VdMdjz-3-x7ZZYEofhmCPdrmI5vwStyd7ZTDJhmbKt-ZDjaip0a2Pp9yS0iLN9HNS4g.rpRGyv5VLovDt8Xz--42zQ.rfVTchtDNEi7WlCaZM0mzXAG8P3WM032XeiU7JMs3K3ks-oFaK0FxHO1sTaq2JazexO4_kztw_sJxaYKPod2owN6iYUZbpTZLZzWypeGDkdcvF5SCCPqgo0wbPiFzeXoJmZ4oWdRMO9gvdSc1Z19N9VhxCAwiLlieBz9OdJJt_iWmba4yYjFHro7eSN-qFOs \
     neural-networks-deep-learning \
     deep-neural-network \
     machine-learning-projects \
