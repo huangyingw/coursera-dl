@@ -28,3 +28,7 @@
 [deploy]
 	host = localhost
 	path = ~/myproject/git/AI/coursera/coursera-dl/coursera-dl
+[gdif]
+    ignore = .gitignore
+    ignore = README.md
+    ignore = run.sh
