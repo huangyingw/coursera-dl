@@ -985,6 +985,7 @@
 "./deeplearning.ai/5-nlp-sequence-models/03_sequence-models-attention-mechanism/05_programming-assignments/03_trigger-word-detection_instructions.html"
 "./deeplearning.ai/5-nlp-sequence-models/04_Resources/01_course-acknowledgments/01__resources.html"
 "./deeplearning.ai/coursera-dl.conf"
+"./docker-compose.yml"
 "./fabfile.py"
 "./fav.log.sort"
 "./fdocs.config"
