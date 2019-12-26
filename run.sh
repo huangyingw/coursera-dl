@@ -7,7 +7,7 @@ python3 setup.py build
 python3 setup.py install
 coursera-dl \
     --subtitle-language en,zh-CN \
-    --path deeplearning.ai \
+    --path download/ \
     --download-quizzes \
     --download-notebooks \
     --ignore-formats txt \
@@ -18,3 +18,10 @@ coursera-dl \
     machine-learning-projects \
     convolutional-neural-networks \
     nlp-sequence-models
+
+~/loadrc/bashrc/copy.sh download/neural-networks-deep-learning/ deeplearning.ai/1-neural-networks-deep-learning/
+~/loadrc/bashrc/copy.sh download/deep-neural-network/ deeplearning.ai/2-deep-neural-network/
+~/loadrc/bashrc/copy.sh download/machine-learning-projects/ deeplearning.ai/3-machine-learning-projects/
+~/loadrc/bashrc/copy.sh download/convolutional-neural-networks/ deeplearning.ai/4-convolutional-neural-networks/
+~/loadrc/bashrc/copy.sh download/nlp-sequence-models/ deeplearning.ai/5-nlp-sequence-models/
+jdupes -1dNr "$TARGET" deeplearning.ai/
