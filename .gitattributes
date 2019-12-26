@@ -2,3 +2,4 @@ coursera/test/* linguist-vendored
 docker-compose.yml  diff=nodiff
 fdocs.config  diff=nodiff 
 fdocs.list  diff=nodiff  
+.gitattributes  diff=nodiff  
