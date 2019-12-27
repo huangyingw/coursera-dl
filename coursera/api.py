@@ -11,7 +11,6 @@ import base64
 import logging
 import time
 import requests
-import urllib
 
 from collections import namedtuple, OrderedDict
 from six import iterkeys, iteritems
@@ -1433,7 +1432,10 @@ class CourseraOnDemand(object):
                        )
 
         # Return authorization id. This id changes on each request
-        return dom['elements'][0]['authorizationId']
+        try:
+            return dom['elements'][0]['authorizationId']
+        except KeyError:
+            return dom['elements'][0]['id']
 
     def _extract_assignment_text(self, element_id):
         """
