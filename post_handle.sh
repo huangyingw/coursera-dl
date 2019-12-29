@@ -9,5 +9,5 @@ cd "$SCRIPTPATH"
 ~/loadrc/bashrc/copy_ignore_existing.sh download/convolutional-neural-networks/ deeplearning.ai/4-convolutional-neural-networks/
 ~/loadrc/bashrc/copy_ignore_existing.sh download/nlp-sequence-models/ deeplearning.ai/5-nlp-sequence-models/
 ~/loadrc/bashrc/copy_ignore_existing.sh download/machine-learning/ deeplearning.ai/6-machine-learning/
-~/loadrc/htmlrc/convert_all_htmls.sh deeplearning.ai/
+~/loadrc/htmlrc/convert_all_htmls.sh ./deeplearning.ai/
 jdupes -1dNr "$TARGET" deeplearning.ai/
