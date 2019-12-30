@@ -3,7 +3,7 @@ SCRIPT=$(realpath "$0")
 SCRIPTPATH=$(dirname "$SCRIPT")
 cd "$SCRIPTPATH"
 
-targetFolder="$HOME/Dropbox/myproject/git/AI/coursera/deeplearning.ai/"
+targetFolder="$HOME/myproject/git/AI/coursera/deeplearning.ai/"
 ~/loadrc/bashrc/copy_ignore_existing.sh download/neural-networks-deep-learning/ "$targetFolder"1-neural-networks-deep-learning/
 ~/loadrc/bashrc/copy_ignore_existing.sh download/deep-neural-network/ "$targetFolder"2-deep-neural-network/
 ~/loadrc/bashrc/copy_ignore_existing.sh download/machine-learning-projects/ "$targetFolder"3-machine-learning-projects/
