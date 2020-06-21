@@ -1,6 +1,6 @@
-[remote "origin"]
+[remote "coursera-dl"]
     url = https://github.com/coursera-dl/coursera-dl.git
-    fetch = +refs/heads/*:refs/remotes/origin/*
+    fetch = +refs/heads/*:refs/remotes/coursera-dl/*
 [remote "vstrizhenok"]
     url = https://github.com/vstrizhenok/coursera-dl.git
     fetch = +refs/heads/*:refs/remotes/vstrizhenok/*
@@ -12,7 +12,7 @@
 [push]
     remote = github
 [gsync]
-    remote = origin
+    remote = coursera-dl
     branch = master
 [merge]
 	allow = true
