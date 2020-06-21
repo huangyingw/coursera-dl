@@ -31,6 +31,8 @@
 	host = localhost
 	path = ~/myproject/git/AI/coursera/coursera-dl/coursera-dl
 [gdif]
+    ignore = .gitattributes
     ignore = .gitignore
     ignore = README.md
+    ignore = post_handle.sh
     ignore = run.sh
