@@ -42,10 +42,8 @@ For further documentation and examples, visit the project's home at:
 """
 
 
-import json
 import logging
 import os
-import re
 import time
 import shutil
 
@@ -71,7 +69,6 @@ from .utils import (clean_filename, get_anchor_format, mkdir_p, fix_url,
                     spit_json, slurp_json)
 
 from .api import expand_specializations
-from .network import get_page, get_page_and_url
 from .commandline import parse_args
 from .extractors import CourseraExtractor
 
@@ -234,7 +231,23 @@ def main():
 
     session = get_session()
     if args.cookies_cauth:
+        import sqlite3
+        database = r"/Users/huangyingw/Library/Application Support/Google/Chrome/Default/Cookies"
+        conn = sqlite3.connect(database)
+        with conn:
+            cur = conn.cursor()
+            cur.execute('select name, encrypted_value from cookies where host_key like "%coursera.org" and name == "CAUTH"')
+            rows = cur.fetchall()
+            name, encrypted_value = rows[0]
+            encrypted_value = str(encrypted_value)
+            print('name type  --> %s' % type(name))
+            print('name --> %s' % name)
+            print('encrypted_value type  --> %s' % type(encrypted_value))
+            print('encrypted_value --> %s' % encrypted_value)
+        session.cookies.set('CAUTH', encrypted_value)
+        """
         session.cookies.set('CAUTH', args.cookies_cauth)
+        """
     else:
         login(session, args.username, args.password)
     if args.specialization:
