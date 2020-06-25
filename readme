@@ -1,0 +1,13 @@
+Auto CAUTH authentication?
+
+I noticed coursera-dl support manually provide CAUTH authentication with -ca option.
+But this requere manually copy from say, chrome console.
+Could we make it automatic ?
+
+The answer is most probably YES.
+
+I use mac, the Cookie file for my chrome is ~/Library/Application Support/Google/Chrome/Default/Cookies
+I did some investigation, and some codes, but still no luck, could anyone help me with this?
+
+
+https://github.com/huangyingw/coursera-dl/blob/dev/coursera/coursera_dl.py line 234 to 247
