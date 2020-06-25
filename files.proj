@@ -155,6 +155,7 @@
 "./post_handle.sh"
 "./prunefile.conf"
 "./prunefix.conf"
+"./readme"
 "./requirements-dev.txt"
 "./requirements.txt"
 "./run.sh"
