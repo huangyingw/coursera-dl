@@ -1,13 +1,33 @@
 Auto CAUTH authentication?
 
 I noticed coursera-dl support manually provide CAUTH authentication with -ca option.
-But this requere manually copy from say, chrome console.
+And this option indeed works well.
+
+Except that this is incovenient, always need to manually copy from say, chrome console.
 Could we make it automatic ?
 
 The answer is most probably YES.
-
-I use mac, the Cookie file for my chrome is ~/Library/Application Support/Google/Chrome/Default/Cookies
 I did some investigation, and some codes, but still no luck, could anyone help me with this?
 
+I use mac, the Cookie file for my chrome is ~/Library/Application Support/Google/Chrome/Default/Cookies, this is just a sql lite database.
 
+I used SQLiteStudio to query, with sql 'select name, encrypted_value from cookies where host_key like "%coursera.org" and name == "CAUTH"'
+I could indeed get the encrypted_value of CAUTH, and pass this value to cookies to authenticate, but fail.
+
+I tried decode it to str with 
+str(encrypted_value, 'utf-8')
+but get
+UnicodeDecodeError: 'utf-8' codec can't decode byte 0xe6 in position
+
+But if I just bytes to str with 
+str(encrypted_value)
+
+I got following error:
+Error 403 Client Error: Forbidden for url: https://api.coursera.org/api/memberships.v1?includes=courseId,courses.v1&q=me&showHidden=true&filter=current,preEnrolled getting page https://api.coursera.org/api/memberships.v1?includes=courseId,courses.v1&q=me&showHidden=true&filter=current,preEnrolled
+The server replied: {"errorCode":"Not Authorized","message":null,"details":null}
+HTTPError 403 Client Error: Forbidden for url: https://api.coursera.org/api/memberships.v1?includes=courseId,courses.v1&q=me&showHidden=true&filter=current,preEnrolled
+I tested this with a free course: machine-learning, so I think it is not membership(not paid) issue, only and still authentication failure.
+
+
+Bellow is my change to coursera/coursera_dl.py file
 https://github.com/huangyingw/coursera-dl/blob/dev/coursera/coursera_dl.py line 234 to 247
