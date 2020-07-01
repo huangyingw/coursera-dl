@@ -232,6 +232,7 @@ def main():
     session = get_session()
     if args.cookies_cauth:
         import sqlite3
+        import base64
         database = r"/Users/huangyingw/Library/Application Support/Google/Chrome/Default/Cookies"
         conn = sqlite3.connect(database)
         with conn:
@@ -239,11 +240,11 @@ def main():
             cur.execute('select name, encrypted_value from cookies where host_key like "%coursera.org" and name == "CAUTH"')
             rows = cur.fetchall()
             name, encrypted_value = rows[0]
-            encrypted_value = str(encrypted_value)
-            print('name type  --> %s' % type(name))
-            print('name --> %s' % name)
             print('encrypted_value type  --> %s' % type(encrypted_value))
             print('encrypted_value --> %s' % encrypted_value)
+            encrypted_value = base64.b64decode(encrypted_value).decode('ascii')
+            print('name type  --> %s' % type(name))
+            print('name --> %s' % name)
         session.cookies.set('CAUTH', encrypted_value)
         """
         session.cookies.set('CAUTH', args.cookies_cauth)
