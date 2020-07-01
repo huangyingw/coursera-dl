@@ -35,4 +35,5 @@
     ignore = .gitignore
     ignore = README.md
     ignore = post_handle.sh
+    ignore = readme
     ignore = run.sh
