@@ -1,0 +1,71 @@
+diff --git a/coursera/api.py b/coursera/api.py
+index a7a11b1..e9e77ab 100644
+--- ./coursera/api.py
++++ ./coursera/api.py
+@@ -11,7 +11,6 @@ import base64
+ import logging
+ import time
+ import requests
+-import urllib
+ 
+ from collections import namedtuple, OrderedDict
+ from six import iterkeys, iteritems
+@@ -1433,7 +1432,10 @@ class CourseraOnDemand(object):
+                        )
+ 
+         # Return authorization id. This id changes on each request
++        try:
+             return dom['elements'][0]['authorizationId']
++        except KeyError:
++            return dom['elements'][0]['id']
+ 
+     def _extract_assignment_text(self, element_id):
+         """
+diff --git a/coursera/coursera_dl.py b/coursera/coursera_dl.py
+index 64a48db..56049ba 100644
+--- ./coursera/coursera_dl.py
++++ ./coursera/coursera_dl.py
+@@ -42,10 +42,8 @@ For further documentation and examples, visit the project's home at:
+ """
+ 
+ 
+-import json
+ import logging
+ import os
+-import re
+ import time
+ import shutil
+ 
+@@ -71,7 +69,6 @@ from .utils import (clean_filename, get_anchor_format, mkdir_p, fix_url,
+                     spit_json, slurp_json)
+ 
+ from .api import expand_specializations
+-from .network import get_page, get_page_and_url
+ from .commandline import parse_args
+ from .extractors import CourseraExtractor
+ 
+@@ -234,7 +231,24 @@ def main():
+ 
+     session = get_session()
+     if args.cookies_cauth:
++        import sqlite3
++        import base64
++        database = r"/Users/huangyingw/Library/Application Support/Google/Chrome/Default/Cookies"
++        conn = sqlite3.connect(database)
++        with conn:
++            cur = conn.cursor()
++            cur.execute('select name, encrypted_value from cookies where host_key like "%coursera.org" and name == "CAUTH"')
++            rows = cur.fetchall()
++            name, encrypted_value = rows[0]
++            print('encrypted_value type  --> %s' % type(encrypted_value))
++            print('encrypted_value --> %s' % encrypted_value)
++            encrypted_value = base64.b64decode(encrypted_value).decode('ascii')
++            print('name type  --> %s' % type(name))
++            print('name --> %s' % name)
++        session.cookies.set('CAUTH', encrypted_value)
++        """
+         session.cookies.set('CAUTH', args.cookies_cauth)
++        """
+     else:
+         login(session, args.username, args.password)
+     if args.specialization:
